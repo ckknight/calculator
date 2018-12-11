@@ -1,22 +1,33 @@
 import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import { SafeAreaView, StyleSheet, View } from "react-native";
+import { Controls } from "./Controls";
+import { CalculatorContext, useCalculator } from "./hooks/useCalculator";
+import { NumberDisplay } from "./NumberDisplay";
 
-export class Calculator extends React.Component {
-  public render() {
-    return (
-      <View style={styles.container}>
-        <Text>Open up App.js to start working on your app!</Text>
-        <Counter />
-      </View>
-    );
-  }
-}
+export const Calculator = React.memo(() => {
+  const {
+    dispatch,
+    value,
+    dot,
+    fractionalZeroes,
+    recentOperation
+  } = useCalculator();
+  return (
+    <CalculatorContext.Provider value={dispatch}>
+      <SafeAreaView style={styles.container}>
+        <NumberDisplay
+          value={value}
+          dot={dot}
+          fractionalZeroes={fractionalZeroes}
+        />
+        <Controls recentOperation={recentOperation} />
+      </SafeAreaView>
+    </CalculatorContext.Provider>
+  );
+});
 
-const styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   container: {
-    alignItems: "center",
-    backgroundColor: "#fff",
-    flex: 1,
-    justifyContent: "center"
+    flex: 1
   }
 });

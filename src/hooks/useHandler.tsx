@@ -1,4 +1,4 @@
-import { useMemo, useRef, useEffect } from "react";
+import { useEffect, useMemo, useRef } from "react";
 
 export function useHandler<A extends any[], R>(
   handler: (...args: A) => R

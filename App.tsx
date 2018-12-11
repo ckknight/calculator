@@ -1,3 +1,3 @@
-import { Calculator } from "./src/Calculator";
+import { CalculatorApp } from "./src/CalculatorApp";
 
-export default Calculator;
+export default CalculatorApp;
